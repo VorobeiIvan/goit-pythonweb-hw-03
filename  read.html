@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+    <nav
+            class="navbar navbar-expand navbar-dark bg-dark"
+            aria-label="Second navbar example"
+    >
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="/logo.png" alt="logo"/>
+            </a>
+            <div class="collapse navbar-collapse" id="navbarsExample02">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/message.html">Send message</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/read">Read</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    </header>
+
+    <main class="container mt-4">
+        <h1 class="mb-4">Messages:</h1>
+        {% if messages %}
+            <ul class="list-group">
+                {% for timestamp, data in messages.items() %}
+                    <li class="list-group-item">
+                        <p>user: {{ data.username }}</p>
+                        <p>time: {{ timestamp }} </p>
+                        <p class="mb-0 pt-2">message: {{ data.message }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="text-muted">No messages</p>
+        {% endif %}
+    </main>
+</body>
+</html>
